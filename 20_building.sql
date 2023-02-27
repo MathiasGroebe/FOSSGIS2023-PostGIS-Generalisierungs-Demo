@@ -20,7 +20,8 @@ ALTER TABLE map.building ADD PRIMARY KEY (fid);
 -- Gebäude mittels Buffer vereinfachen
 DROP TABLE IF EXISTS map.building_simple;
 CREATE TABLE map.building_simple AS
-SELECT fid, ST_Buffer(ST_Buffer(ST_Buffer(ST_Buffer(geom, -3, 'endcap=flat join=mitre'), 1, 'endcap=flat join=mitre'), 5, 'endcap=flat join=mitre'), -3, 'endcap=flat join=mitre') AS geom
+SELECT fid, ST_SimplifyVW(ST_Buffer(ST_Buffer(ST_Buffer(ST_Buffer(geom, -3, 'endcap=flat join=mitre'), 1, 'endcap=flat join=mitre'), 5, 'endcap=flat join=mitre'), -3, 'endcap=flat join=mitre'), 3) AS geom
 FROM map.building;
 CREATE INDEX map_building_simple_geom ON map.building_simple USING gist(geom); 
 ALTER TABLE map.building_simple ADD PRIMARY KEY (fid);
+

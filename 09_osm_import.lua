@@ -2,7 +2,7 @@
 --[[
 osm2pgsql -c -C 4000 -O flex -S 00_osm_import.lua -d postgres://... beispiel.osm.pbf
 
-Getestet mit osm2pgsl 1.8.1
+Getestet mit osm2pgsl 1.8.1 unter Linux 
 --]]
 
 print('osm2pgsql version: ' .. osm2pgsql.version)

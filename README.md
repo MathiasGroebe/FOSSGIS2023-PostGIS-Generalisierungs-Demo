@@ -39,7 +39,13 @@ Das Beispielbild zeigt die Verdrängung von Wegweisern, die an ihren neuen Posit
 
 ![Beispiel Verdrängung Wegweiser](img/beispiel_wegweiser.png)
 
-### Verdrängung von Strommasten durch Straßen
+### Verdrängung von Stromleitungen durch Straßen
+
+Beispiel für die Verdrängung von Linien durch andere Lineien. Es wird dabei demonstriert, dass dabei die einzelnen Linienstützpunkte betrachtet werden müssen. Dafür werden die Linien zerlegt und wieder zusammengebaut.
+
+Das Beispiel lässt sich schwer auf andere Linien übertragen, zeigt aber sehr anschaulich was mit den einzelnen Stützpunkten einer Linie passiert. Die schwarze Linie ist die verdrängte Linie, während die graue Linie die orginale Line darstellt. Die Stützpunkte sind als keine Quadrate dargestellt. Für die praktische Verwendung ist noch die Auslagerung in eine Funktion denkbar, um die Komplxität der Abfrage zu reduizieren.
+
+![Beispiel Verdrängung Stromleitung](img/beispiel_stromleitung.png)
 
 ## Benötige Software
 

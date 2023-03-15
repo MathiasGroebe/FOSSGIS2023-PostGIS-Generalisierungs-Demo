@@ -1,9 +1,10 @@
+CREATE displacment.power_line_displaced AS
 WITH
 buffer_line AS ( -- Linien auf Signatur erweitern
 	SELECT fid, ST_Buffer(geom, 10)::geometry(Polygon, 32638) AS geom
 	FROM displacement.highway h
 	WHERE highway IN ('secondary', 'tertiary', 'unclassified', 'residential')
-	),
+),
 dump_points AS ( -- Linien in einzelne Stützpunkt zerlegen
 	SELECT fid, (ST_DumpPoints(geom)).* 
 	FROM displacement.power_line 
@@ -68,6 +69,9 @@ make_lines AS ( -- Punkte wieder zu Linien zusammenbauen
 	GROUP BY fid
 )
 
-SELECT *
-FROM make_lines
+SELECT fid, geom 
+FROM make_lines;
+CREATE INDEX displacement_power_line_displaced ON displacement.power_line_displaced USING gist(geom);
+ALTER TABLE displacement.power_line_displaced ADD PRIMARY KEY (fid);
+
 
